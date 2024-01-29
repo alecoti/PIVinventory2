@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Importa File</h1>
+
+    <!-- Bottone per avviare la funzione di importazione -->
+    <button class="btn btn-primary" id="importButton">Avvia Importazione</button>
+
+    <!-- Campo di ricerca -->
+    <div class="input-group mt-3">
+        <input type="text" class="form-control" placeholder="Cerca file...">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Cerca</button>
+        </div>
+    </div>
+
+    <!-- Elenco dei file nella cartella "download" -->
+    <div class="mt-4">
+        {% if file_list %}
+        <h2>File Disponibili:</h2>
+        <div class="row">
+            {% for file_name in file_list %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="file_icon.png" class="card-img-top" alt="Icona File">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ file_name }}</h5>
+                        <a href="#" class="btn btn-primary">Scarica</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Nessun file presente nella cartella "download".</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
